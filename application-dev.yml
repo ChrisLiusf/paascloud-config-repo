@@ -137,3 +137,21 @@ paascloud:
       qiniuPath: alipay/QRCode/
   zk:
     zkAddressList: paascloud-provider-zk:2181
+  oauth2:
+    jwtSigningKey: paascloud
+    client:
+      id: ${security.oauth2.resource.id}
+      accessTokenUrl: ${security.oauth2.client.access-token-uri}
+      clientId: ${security.oauth2.client.clientId}
+      clientSecret: ${security.oauth2.client.clientSecret}
+      clientAuthenticationScheme: header
+security:
+  oauth2:
+    client:
+      clientId: whistle-client-uac
+      clientSecret: paascloudClientSecret
+      access-token-uri: http://paascloud-gateway:7979/uac/oauth/token
+      user-authorization-uri: http://paascloud-gateway:7979/uac/oauth/authorize
+    resource:
+      id: whistle-resource-uac
+      filter-order: 3
